@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Morse_code", "Morse_code.csproj", "{5A6B4550-8104-49BA-BCC2-4FDBBD60444A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Morse_code", "Morse_code.csproj", "{5A6B4550-8104-49BA-BCC2-4FDBBD60444A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Morse_translator", "..\Morse_translator\Morse_translator.csproj", "{6F95D41B-841C-4A66-BD9D-B346BC25E41D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Morse_Translator", "Morse_Translator\Morse_Translator.csproj", "{B481AA0A-A7F6-4FA7-8823-555748FE3E8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{5A6B4550-8104-49BA-BCC2-4FDBBD60444A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A6B4550-8104-49BA-BCC2-4FDBBD60444A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A6B4550-8104-49BA-BCC2-4FDBBD60444A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6F95D41B-841C-4A66-BD9D-B346BC25E41D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6F95D41B-841C-4A66-BD9D-B346BC25E41D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6F95D41B-841C-4A66-BD9D-B346BC25E41D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6F95D41B-841C-4A66-BD9D-B346BC25E41D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B481AA0A-A7F6-4FA7-8823-555748FE3E8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B481AA0A-A7F6-4FA7-8823-555748FE3E8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B481AA0A-A7F6-4FA7-8823-555748FE3E8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B481AA0A-A7F6-4FA7-8823-555748FE3E8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
