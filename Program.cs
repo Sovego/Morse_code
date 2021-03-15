@@ -7,9 +7,12 @@ namespace Morse_code
         static void Main(string[] args)
         {
             Console.WriteLine("Input Morse Code ");
-            string str=Console.ReadLine();
+            string str = Console.ReadLine();
             Console.WriteLine(Morse.TranslateFromMorse(str));
-            
+            Console.WriteLine("Input English ");
+            str = Console.ReadLine();
+            Console.WriteLine(Morse.TranslateToMorse(str));
+
         }
     }
 }
