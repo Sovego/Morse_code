@@ -8,10 +8,10 @@ namespace Morse_code
         {
             Console.WriteLine("Input Morse Code ");
             string str = Console.ReadLine();
-            Console.WriteLine(Morse.TranslateFromMorse(str));
+            Console.WriteLine(Morse.TranslateFromMorseToEnglish(str));
             Console.WriteLine("Input English ");
             str = Console.ReadLine();
-            Console.WriteLine(Morse.TranslateToMorse(str));
+            Console.WriteLine(Morse.TranslateToMorseFromEnglish(str));
 
         }
     }
