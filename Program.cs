@@ -6,7 +6,13 @@ namespace Morse_code
     {
         static void Main(string[] args)
         {
-           
+           Console.WriteLine("Hello world ");
+           string str;
+           Console.WriteLine("Input text ");
+           str=Console.ReadLine();
+           Console.WriteLine("Select Languages 1 ToEnglish 2 ToMorse");
+           int i=int.Parse(Console.ReadLine());
+           Console.WriteLine(Morse.TranslateToMorseFromEnglish(str,i));
         }
     }
 }

@@ -169,7 +169,7 @@ namespace Morse_translator
                             } break;
                         case 4:try
                             {
-                                outStr += _abc4[x];
+                               // outStr += _abc4[x];
                             }
                             catch
                             {
