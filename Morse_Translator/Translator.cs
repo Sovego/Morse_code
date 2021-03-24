@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 
 namespace Morse_translator
 {
@@ -103,9 +104,79 @@ namespace Morse_translator
             ["---"]="О",
             ["*--*"]="П",
             ["*-*"]="Р",
-            ["***"]="С"
+            ["***"]="С",
+            ["-"]="Т",
+            ["**-"]="У",
+            ["**-*"]="Ф",
+            ["****"]="Х",
+            ["-*-*"]="Ц",
+            ["---*"]="Ч",
+            ["----"]="Ш",
+            ["--*-"]="Щ",
+            ["*--*-*"]="Ъ",
+            ["-*--"]="Ы",
+            ["-**-"]="Ь",
+            ["***-***"]="Э",
+            ["**--"]="Ю",
+            ["*-*-"]="Я",
+            ["1"] = "*----",
+            ["2"] = "**---",
+            ["3"] = "***--",
+            ["4"] = "****-",
+            ["5"] = "*****",
+            ["6"] = "-****",
+            ["7"] = "--***",
+            ["8"] = "---**",
+            ["9"] = "----*",
+            ["0"] = "-----"
         };
 
+        private static Dictionary<string, string> _abc4 = new(41)
+        {
+            ["А"] = "*-",
+            ["Б"] = "-***",
+            ["В"] = "*--",
+            ["Г"] = "--*",
+            ["Д"] = "-**",
+            ["Е"] = "*",
+            ["Ж"] = "***-",
+            ["З"] = "--**",
+            ["И"] = "**",
+            ["К"] = "-*-*",
+            ["Л"] = "*-**",
+            ["М"] = "--",
+            ["Н"] = "-*",
+            ["О"] = "---",
+            ["П"] = "*--*",
+            ["Р"] = "*-*",
+            ["С"] = "***",
+            ["Т"] = "-",
+            ["У"] = "**-",
+            ["Ф"] = "**-*",
+            ["Х"] = "****",
+            ["Ц"] = "-*-*",
+            ["Ч"] = "---*",
+            ["Ш"] = "----",
+            ["Щ"] = "--*-",
+            ["Ъ"] = "*--*-*",
+            ["Ы"] = "-*--",
+            ["Ь"] = "-**-",
+            ["Э"] = "***-***",
+            ["Ю"] = "**--",
+            ["Я"] = "*-*-",
+            ["1"] = "*----",
+            ["2"] = "**---",
+            ["3"] = "***--",
+            ["4"] = "****-",
+            ["5"] = "*****",
+            ["6"] = "-****",
+            ["7"] = "--***",
+            ["8"] = "---**",
+            ["9"] = "----*",
+            ["0"] = "-----"
+        };
+
+        
         /// <summary>
         /// Translation from English/Russian to Morse or Morse to English/Russian
         /// </summary>
@@ -113,7 +184,12 @@ namespace Morse_translator
         /// <returns>Translated text</returns>
         public static string TranslateToMorseFromEnglish(string str, int i)
         {
-            
+            string instr = "";
+            using (StreamReader fReader = new StreamReader("./read.txt"))
+            {
+                instr = instr.Insert(0,fReader.Read().ToString());
+            }
+            Console.WriteLine(instr);
             string outStr = "";
             while (str.Length > 0)
             {
@@ -167,14 +243,14 @@ namespace Morse_translator
                             {
                                 return "KeyNotFoundException";
                             } break;
-                        case 4:try
-                            {
-                               // outStr += _abc4[x];
-                            }
-                            catch
-                            {
-                                return "KeyNotFoundException";
-                            } break;
+                        case 4://try
+                            //{ 
+                                outStr += _abc4[x];
+                            //}
+                            //catch
+                            //{
+                             //   return "KeyNotFoundException";
+                             break;
                     }
                     
             }
