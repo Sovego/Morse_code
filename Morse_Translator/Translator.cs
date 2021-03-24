@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
-namespace Morse_translator
+namespace Morse_code.Morse_Translator
 {
     public class Morse
     {
-        private static Dictionary<string, string> _abc1 = new(36)
+        private static readonly Dictionary<string, string> _abc1 = new(36)
         {
             ["*-"] = "A",
             ["-***"] = "B",
@@ -46,7 +45,8 @@ namespace Morse_translator
             ["----*"] = "9",
             ["-----"] = "0"
         };
-        private static Dictionary<string, string> _abc2 = new(36)
+
+        private static readonly Dictionary<string, string> _abc2 = new(36)
         {
             ["A"] = "*-",
             ["B"] = "-***",
@@ -86,39 +86,39 @@ namespace Morse_translator
             ["0"] = "-----"
         };
 
-        private static Dictionary<string, string> _abc3 = new(41)
+        private static readonly Dictionary<string, string> _abc3 = new(41)
         {
-            ["*-"]="А",
-            ["-***"]="Б",
-            ["*--"]="В",
-            ["--*"]="Г",
-            ["-**"]="Д",
-            ["*"]="Е",
-            ["***-"]="Ж",
-            ["--**"]="З",
-            ["**"]="И",
-            ["-*-*"]="К",
-            ["*-**"]="Л",
-            ["--"]="М",
-            ["-*"]="Н",
-            ["---"]="О",
-            ["*--*"]="П",
-            ["*-*"]="Р",
-            ["***"]="С",
-            ["-"]="Т",
-            ["**-"]="У",
-            ["**-*"]="Ф",
-            ["****"]="Х",
-            ["-*-*"]="Ц",
-            ["---*"]="Ч",
-            ["----"]="Ш",
-            ["--*-"]="Щ",
-            ["*--*-*"]="Ъ",
-            ["-*--"]="Ы",
-            ["-**-"]="Ь",
-            ["***-***"]="Э",
-            ["**--"]="Ю",
-            ["*-*-"]="Я",
+            ["*-"] = "А",
+            ["-***"] = "Б",
+            ["*--"] = "В",
+            ["--*"] = "Г",
+            ["-**"] = "Д",
+            ["*"] = "Е",
+            ["***-"] = "Ж",
+            ["--**"] = "З",
+            ["**"] = "И",
+            ["-*-*"] = "К",
+            ["*-**"] = "Л",
+            ["--"] = "М",
+            ["-*"] = "Н",
+            ["---"] = "О",
+            ["*--*"] = "П",
+            ["*-*"] = "Р",
+            ["***"] = "С",
+            ["-"] = "Т",
+            ["**-"] = "У",
+            ["**-*"] = "Ф",
+            ["****"] = "Х",
+            ["-*-*"] = "Ц",
+            ["---*"] = "Ч",
+            ["----"] = "Ш",
+            ["--*-"] = "Щ",
+            ["*--*-*"] = "Ъ",
+            ["-*--"] = "Ы",
+            ["-**-"] = "Ь",
+            ["***-***"] = "Э",
+            ["**--"] = "Ю",
+            ["*-*-"] = "Я",
             ["1"] = "*----",
             ["2"] = "**---",
             ["3"] = "***--",
@@ -131,7 +131,7 @@ namespace Morse_translator
             ["0"] = "-----"
         };
 
-        private static Dictionary<string, string> _abc4 = new(41)
+        private static readonly Dictionary<string, string> _abc4 = new(41)
         {
             ["А"] = "*-",
             ["Б"] = "-***",
@@ -176,39 +176,38 @@ namespace Morse_translator
             ["0"] = "-----"
         };
 
-        
+
         /// <summary>
-        /// Translation from English/Russian to Morse or Morse to English/Russian
+        ///     Translation from English/Russian to Morse or Morse to English/Russian
         /// </summary>
-        /// <param name="str">Input text</param>
+        /// <param name="instrInput text
+        /// </param>
         /// <returns>Translated text</returns>
-        public static string TranslateToMorseFromEnglish(string str, int i)
+        public static void TranslateToMorseFromEnglish(int i)
         {
-            string instr = "";
-            using (StreamReader fReader = new StreamReader("./read.txt"))
+            var instr = "";
+            using (var fReader = new StreamReader("./read.txt"))
             {
-                instr = instr.Insert(0,fReader.Read().ToString());
+                while (!fReader.EndOfStream)
+                    instr += Convert.ToChar(fReader.Read());
             }
+
             Console.WriteLine(instr);
-            string outStr = "";
-            while (str.Length > 0)
+            var outStr = "";
+            while (instr.Length > 0)
             {
-                int j = 0;
-                string x = "";
-                while (j < str.Length && str[j] != ' ')
+                var j = 0;
+                var x = "";
+                while (j < instr.Length && instr[j] != ' ')
                 {
-                    x += str[j];
+                    x += instr[j];
                     j++;
                 }
-                if (str[0] == ' ')
-                {
-                    x += "1";
-                }
-                str = str.Remove(0, x.Length);
+
+                if (instr[0] == ' ') x += "1";
+                instr = instr.Remove(0, x.Length);
                 if (x == "1")
-                {
                     outStr += " ";
-                }
                 else
                     switch (i)
                     {
@@ -220,17 +219,19 @@ namespace Morse_translator
                             }
                             catch
                             {
-                                return "KeyNotFoundException";
+                                outStr += x;
                             }
+
                             break;
                         }
-                        case 2: try
+                        case 2:
+                            try
                             {
                                 outStr += _abc2[x];
                             }
                             catch
                             {
-                                return "KeyNotFoundException";
+                                outStr += x;
                             }
 
                             break;
@@ -241,23 +242,29 @@ namespace Morse_translator
                             }
                             catch
                             {
-                                return "KeyNotFoundException";
-                            } break;
-                        case 4://try
-                            //{ 
-                                outStr += _abc4[x];
-                            //}
-                            //catch
-                            //{
-                             //   return "KeyNotFoundException";
-                             break;
-                    }
-                    
-            }
-            return outStr;
-        }
+                                outStr += x;
+                            }
 
-        
+                            break;
+                        case 4:
+                            try
+                            {
+                                outStr += _abc4[x];
+                            }
+                            catch
+                            {
+                                outStr += x;
+                            }
+
+
+                            break;
+                    }
+            }
+
+            using (var fWriter = new StreamWriter("./output.txt", false))
+            {
+                fWriter.Write(outStr);
+            }
+        }
     }
 }
-
