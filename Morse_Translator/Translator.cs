@@ -178,12 +178,9 @@ namespace Morse_code.Morse_Translator
 
 
         /// <summary>
-        ///     Translation from English/Russian to Morse or Morse to English/Russian
+        /// Translation from English/Russian to Morse or Morse to English/Russian
         /// </summary>
-        /// <param name="instrInput text
-        /// 
-        /// </param>
-        /// <returns>Translated text</returns>
+        /// <param name="i">1 FromMorseToEnglish 2 FromEnglishToMorse 3 FromMorseToRussian 4 FromRussianToMorse</param>
         public static void TranslateToMorseFromEnglish(int i)
         {
             var instr = "";
@@ -261,7 +258,6 @@ namespace Morse_code.Morse_Translator
                             break;
                     }
             }
-
 
             using (var fWriter = new StreamWriter("./output.txt", false))
             {
